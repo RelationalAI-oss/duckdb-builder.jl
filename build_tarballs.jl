@@ -16,10 +16,15 @@ cd $WORKSPACE/srcdir
 
 sed -i 's|add_subdirectory(tools)||' CMakeLists.txt
 sed -i 's|add_subdirectory(benchmark)||' CMakeLists.txt
+sed -i 's|add_subdirectory(test)||' CMakeLists.txt
+sed -i 's|add_subdirectory(sqlsmith)||' third_party/CMakeLists.txt
 
 mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..
+if [ $target = "x86_64-apple-darwin14" ]; then
+  sed -i 's|-soname,libduckdb.so -o libduckdb.so|-install_name,libduckdb.dylib -o libduckdb.dylib|' ./src/CMakeFiles/duckdb.dir/link.txt
+fi
 make -j$(nproc)
 mkdir $prefix/lib
 cp -R src/libduckdb.* $prefix/lib/
