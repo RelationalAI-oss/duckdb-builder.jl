@@ -13,10 +13,14 @@ sources = [
 # Bash recipe for building across all platforms
 script = raw"""
 cd $WORKSPACE/srcdir
+
+sed -i 's|add_subdirectory(tools)||' CMakeLists.txt
+sed -i 's|add_subdirectory(benchmark)||' CMakeLists.txt
+
 mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..
-make
+make -j$(nproc)
 mkdir $prefix/lib
 cp -R src/libduckdb.* $prefix/lib/
 
@@ -25,7 +29,7 @@ cp -R src/libduckdb.* $prefix/lib/
 # These are the platforms we will build for by default, unless further
 # platforms are passed in on the command line
 platforms = [
-    Linux(:x86_64, libc=:glibc),
+    Linux(:x86_64, libc=:glibc, compiler_abi=CompilerABI(:gcc7, :cxx11))
     MacOS(:x86_64)
 ]
 
