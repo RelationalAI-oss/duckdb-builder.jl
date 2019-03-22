@@ -28,7 +28,7 @@ fi
 make -j$(nproc)
 mkdir $prefix/lib
 cp -R src/libduckdb.* $prefix/lib/
-
+cp -R src/include $prefix/include
 """
 
 # These are the platforms we will build for by default, unless further
