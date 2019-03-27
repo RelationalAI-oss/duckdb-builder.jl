@@ -3,7 +3,7 @@
 using BinaryBuilder
 
 name = "duckdb"
-version = v"0.0.0"
+version = v"0.0.1"
 
 # Collection of sources required to build tpch-dbgen
 sources = [
@@ -28,7 +28,7 @@ fi
 make -j$(nproc)
 mkdir $prefix/lib
 cp -R src/libduckdb.* $prefix/lib/
-cp -R src/include $prefix/include
+cp -R $WORKSPACE/srcdir/src/include $prefix/include
 """
 
 # These are the platforms we will build for by default, unless further
