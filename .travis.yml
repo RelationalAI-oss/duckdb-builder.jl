@@ -7,6 +7,8 @@ notifications:
   email: false
 git:
   depth: 99999999
+  submodules: false
+
 cache:
   timeout: 1000
   directories:
@@ -15,6 +17,11 @@ env:
   global:
     - BINARYBUILDER_AUTOMATIC_APPLE=true
 sudo: required
+
+# Use sed to replace the SSH URL with the public URL, then initialize submodules
+before_install:
+    - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+    - git submodule update --init --recursive
 
 before_script:
   - julia -e 'using Pkg; Pkg.add("BinaryBuilder")'
