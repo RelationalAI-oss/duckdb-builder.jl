@@ -33,5 +33,5 @@ deploy:
     file: products/*
     skip_cleanup: true
     on:
-        repo: relationalai-oss/duckdb-builder.jl
+        repo: RelationalAI-oss/duckdb-builder.jl
         tags: true
