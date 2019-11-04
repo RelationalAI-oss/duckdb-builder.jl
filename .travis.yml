@@ -24,10 +24,15 @@ before_script:
 script:
 - julia build_tarballs.jl --verbose
 deploy:
-  provider: releases
-  api_key:
-    secure: G1m7wpQGFTnw9Tj9SZxqq3l2gkbYRnn/kxBUrvtAk6X43r2lxKlWYNDKwbOnQ0PNcghP+etq9Z9iIaQwcmh+rq3fo2yMTBcWYT788g8q1BD7KPFQfpVGyUcTTA5/GJYfe51IyimOVDbBEImQdpNrZFFFqjT4KuCQGbp2brN/9AFlNCnEOEUy7QjivnSMXCLnmv1ZbDGh3nbpNKz7OqePQqEiprkXdcXxuQP+gHm1pGIIpxMQP2CYqy/ODIjydq5gdKgI2RWILqSj/Y+r2UTx2Ugw2VBdAev/T0Eta7AOFyTFhzZ00dwJYLtTLGqAGb8KVic9Kb6DlNV7YTvQfcPjsHFV2xcV5zJKrOWxt1Axg8t7uJMUyoZEdSG1b+fb7xMNqmyAGVlef5O2R0fJ5J6d9jWplhlf/GEKof8mF6R5bXXF1FmtqXkRNVKLdHd6e/U26J9rxPnQqHg9X3nHU0dLGHQjOLBGCPZu/utqRxOrMl3eW64kPpbEHiGZIpns5PxXan6mWfbga648IfUCG6Fn6PfQ2Um6AlHUF1OORO1FERMPURJWyWV3+0gyq91UGRVKvRZoFPJ94rnnHIya+qtKF0DSOEpW7QKUZ1aMXeccps6Z3+kaGIjQKlhJJkYFmTuQ92gyDfBLVOJkczTvkAQ7NheIsl4EQnWZI3dFsE2sK4k=
-  file: products/*
-  on:
-    repo: RelationalAI-oss/duckdb-builder.jl
-    tags: true
+    provider: releases
+    api_key:
+        # Note; this api_key is only valid for relationalai-oss/duckdb-builder.jl; you need
+        # to make your own: https://docs.travis-ci.com/user/deployment/releases/
+        secure: sL2v5fa8VpgSaBO45IP2zfNkvVgc5yFjR0J2c5K+JwDcPvaGmrFm+AasMXy/TGClOqyX+SqXYowrfH4AQmbyeAxgSLjBsuQL65abE5gfHm6AjGxPu5s480OTIpSlLYl9yobjg+j876cfYziq1R+3FI4tdsd1U5bq97EWTYSnSiP0rPMgk9ldaKGkEfDryCs8CsrO5dTbugpQAmC/Dsgw9wXqLX3wC3CJd63OldEiVAki1XLOIt/ZgcG6aEYd/3qw6bEWvoWSqAj6Fnoed/11eTVNmFPvURn6tGTVniewNX1ERLOZuvn19vzt9gM0IbN1PQ5iHuLt2U6ari2lPtC65YI2bwJ1x8HCDhFr5Y11TWRar8ISOSS+6cYDGqHM6Luch/f4gUcUQFPtQtsK4eyvmmU9FvEpkmZipLfibDfJ7VTCMtp16zgBCUn5ZL6HEviVDUhdT5tlEetiOcLA3aVBRyuQifTN3oJ8ztYCi/o/vtsRUV7a81A5SNX3MOu08lrlYULw98Qnn15p0Dv+4u40EKnXMeT35ZDyAzppvt6V4tIEP/idRAn2ruhQ1pcFsHKQ9SyXnocj/20l+qCGvcCL1kP+rs8PiHiXyI3FOXdB0mzK8lmGf5d3VRHu3Jh/3Zrj9NbabDhcXrn/lYa4hQopZxCZ6iahdnUQvrM5ZJX2qCk=
+    file_glob: true
+    file: products/*
+    skip_cleanup: true
+    on:
+        repo: relationalai-oss/duckdb-builder.jl
+        tags: true
+y
