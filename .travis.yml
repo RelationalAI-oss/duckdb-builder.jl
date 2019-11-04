@@ -35,4 +35,3 @@ deploy:
     on:
         repo: relationalai-oss/duckdb-builder.jl
         tags: true
-y
