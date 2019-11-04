@@ -1,31 +1,32 @@
 language: julia
 os:
-  - linux
+- linux
 julia:
-  - 1.2
+- 1.2
 notifications:
   email: false
 git:
   depth: 99999999
   submodules: false
-
 cache:
   timeout: 1000
   directories:
-    - downloads
+  - downloads
 env:
   global:
-    - BINARYBUILDER_AUTOMATIC_APPLE=true
+  - BINARYBUILDER_AUTOMATIC_APPLE=true
 sudo: required
-
-# Use sed to replace the SSH URL with the public URL, then initialize submodules
 before_install:
-    - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
-    - git submodule update --init --recursive
-
+- sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+- git submodule update --init --recursive
 before_script:
-  - julia -e 'using Pkg; Pkg.add("BinaryBuilder")'
-
+- julia -e 'using Pkg; Pkg.add("BinaryBuilder")'
 script:
-  - julia build_tarballs.jl --verbose
-
+- julia build_tarballs.jl --verbose
+deploy:
+  provider: releases
+  api_key:
+    secure: aml9A/2hd43h/jLBVXOi9d7rrwsuA5zu8TUuanyzCpYW06ptQrevgseWqmP0aoVZD3Y2bUHmxVOoKBL7poQJyUQxCK1KApjVcjCWemE9UlkiYDJQYBZMI6N+VCTWDGR11CZAGtXZ2uNgD59NZZ6zbMGeIRnisTyFj2p85XA9KeO4ZQYnRGre8ICsPKERsJSm1+XiqAd/QAEai0Ao6dcM8YJurJ5Cet/kqJUJXMuMNGlJMX7U/ArdoLFRz14QaplFJ4PM7JIhv41vDqZAlLueiAZ3eP0OJgAW9izQf25+SZuVfjLR9Z3Q+xA5cuiLyxDyjLePsc46x+8XVaUTqUmTRaG013+RJKeROAawZsb+MFn8oeZPAZQJA6XtRd8zKD4wuCtr9CdaPOpv0PLc61NA0JhY0Y8qFuES2JAWh10Q6FZj90QPX5eajfRHMryNJgP/3cGq6TkPRlDDCquHojsHGhPYozz1TV8jOPC70Tej9dmJTGZ/F39yFi7VIRswPrR3rw5DvLSEWnuFR3gbYo/e91EVptK9IQ7lWyylMKDlFWOcs8BfQkcvIBdcORAEtnDs5/IHtUaUGyXEuGX2Larksxsz7HRkZzf8DWC76MFZegNAQUR53upv7Rm8lwpZCR1TVEtF8B3h54/maZ9ISi4H9CHVeDcP2+buAOz6xAr8qDM=
+  file: products/*
+  on:
+    repo: RelationalAI-oss/duckdb-builder.jl
