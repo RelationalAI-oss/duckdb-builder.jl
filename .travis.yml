@@ -30,3 +30,4 @@ deploy:
   file: products/*
   on:
     repo: RelationalAI-oss/duckdb-builder.jl
+    tags: true
