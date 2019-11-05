@@ -45,7 +45,6 @@ products(prefix) = [
 
 # Dependencies that must be installed before this package can be built
 dependencies = [
-    
 ]
 
 # Build the tarballs, and possibly a `build.jl` as well.
