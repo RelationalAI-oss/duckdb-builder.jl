@@ -24,6 +24,7 @@ before_script:
 script:
 - mkdir -p products
 - echo 123 > products/test.jl
+deploy:
     provider: releases
     api_key:
         # Note; this api_key is only valid for RelationalAI-oss/duckdb-builder.jl; you need
