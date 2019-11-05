@@ -22,13 +22,13 @@ before_install:
 before_script:
 - julia -e 'using Pkg; Pkg.add("BinaryBuilder")'
 script:
-- julia build_tarballs.jl --verbose
-deploy:
+- mkdir -p products
+- echo 123 > products/test.jl
     provider: releases
     api_key:
-        # Note; this api_key is only valid for relationalai-oss/duckdb-builder.jl; you need
+        # Note; this api_key is only valid for RelationalAI-oss/duckdb-builder.jl; you need
         # to make your own: https://docs.travis-ci.com/user/deployment/releases/
-        secure: sL2v5fa8VpgSaBO45IP2zfNkvVgc5yFjR0J2c5K+JwDcPvaGmrFm+AasMXy/TGClOqyX+SqXYowrfH4AQmbyeAxgSLjBsuQL65abE5gfHm6AjGxPu5s480OTIpSlLYl9yobjg+j876cfYziq1R+3FI4tdsd1U5bq97EWTYSnSiP0rPMgk9ldaKGkEfDryCs8CsrO5dTbugpQAmC/Dsgw9wXqLX3wC3CJd63OldEiVAki1XLOIt/ZgcG6aEYd/3qw6bEWvoWSqAj6Fnoed/11eTVNmFPvURn6tGTVniewNX1ERLOZuvn19vzt9gM0IbN1PQ5iHuLt2U6ari2lPtC65YI2bwJ1x8HCDhFr5Y11TWRar8ISOSS+6cYDGqHM6Luch/f4gUcUQFPtQtsK4eyvmmU9FvEpkmZipLfibDfJ7VTCMtp16zgBCUn5ZL6HEviVDUhdT5tlEetiOcLA3aVBRyuQifTN3oJ8ztYCi/o/vtsRUV7a81A5SNX3MOu08lrlYULw98Qnn15p0Dv+4u40EKnXMeT35ZDyAzppvt6V4tIEP/idRAn2ruhQ1pcFsHKQ9SyXnocj/20l+qCGvcCL1kP+rs8PiHiXyI3FOXdB0mzK8lmGf5d3VRHu3Jh/3Zrj9NbabDhcXrn/lYa4hQopZxCZ6iahdnUQvrM5ZJX2qCk=
+        secure: edk53S7TxkwnT3hdwLx2TLQoc5ULFOAs/OEnJIgWV/0GtkTvihEkiv1A2/gt+Z9ecXphI8QuKZ04T3WBncJeZ/jdSgMHCDaUBUPlkcpeRG0aGg2RMfkhbeuFIAu0DIctchBFb+umiWlBamZB8W0Wfp3gkVxg5FMFOxCE2sSqNcmDWmXUlu/6aP3z39UXDcppJcS1B9Joj3K495Wv2hrKzI6t4zErQes4XO8wAcR0kHAcOBR9WUjENSpTOL0WxpTiqIrsJNotLUlfgWfGvNltp+iuhwG10VttpTYg2ZffSLDNe9GKkOF52aD0elXDHnzDa6OdebNKm3x/AfXR2sAEy2or7doEEjcqO4X8x97bUxFmlfj2JY2vhXAkxKPGlp3ieQ/ymIKNeq9sfcioiYfeXljBiAIxGoeCla6SE5rONXg8zngrwQTPhySJnYumdXzLqGHl81zI+GhusNA0isCLF82UbAQR3L1LGnjLED2hoBJkqaqNrxEl0c2kONIUEBJUB3upFV134V826Q77zsTxx9Hg5m3imQii4WPv1ab+5Br1+hqjNkoMiQFhOSYcHp3kg2c4I5SkqTJA9ku3XPnsxWwYdDfhzqgiU1UfthENE0s4Tuvcp4p+HG/yd8q0G5hTBvu2lFKA+3B/Mfi+/32TB7ZJQJgfDKsy34zd/lltmEI=
     file_glob: true
     file: products/*
     skip_cleanup: true
