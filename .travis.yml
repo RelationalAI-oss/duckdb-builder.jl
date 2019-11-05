@@ -31,7 +31,7 @@ deploy:
         secure: edk53S7TxkwnT3hdwLx2TLQoc5ULFOAs/OEnJIgWV/0GtkTvihEkiv1A2/gt+Z9ecXphI8QuKZ04T3WBncJeZ/jdSgMHCDaUBUPlkcpeRG0aGg2RMfkhbeuFIAu0DIctchBFb+umiWlBamZB8W0Wfp3gkVxg5FMFOxCE2sSqNcmDWmXUlu/6aP3z39UXDcppJcS1B9Joj3K495Wv2hrKzI6t4zErQes4XO8wAcR0kHAcOBR9WUjENSpTOL0WxpTiqIrsJNotLUlfgWfGvNltp+iuhwG10VttpTYg2ZffSLDNe9GKkOF52aD0elXDHnzDa6OdebNKm3x/AfXR2sAEy2or7doEEjcqO4X8x97bUxFmlfj2JY2vhXAkxKPGlp3ieQ/ymIKNeq9sfcioiYfeXljBiAIxGoeCla6SE5rONXg8zngrwQTPhySJnYumdXzLqGHl81zI+GhusNA0isCLF82UbAQR3L1LGnjLED2hoBJkqaqNrxEl0c2kONIUEBJUB3upFV134V826Q77zsTxx9Hg5m3imQii4WPv1ab+5Br1+hqjNkoMiQFhOSYcHp3kg2c4I5SkqTJA9ku3XPnsxWwYdDfhzqgiU1UfthENE0s4Tuvcp4p+HG/yd8q0G5hTBvu2lFKA+3B/Mfi+/32TB7ZJQJgfDKsy34zd/lltmEI=
     file_glob: true
     file: products/*
-    cleanup: false
+    skip_cleanup: true
     on:
         repo: RelationalAI-oss/duckdb-builder.jl
         tags: true
