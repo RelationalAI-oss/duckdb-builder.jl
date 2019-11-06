@@ -21,8 +21,7 @@ before_install:
 before_script:
 - julia -e 'using Pkg; Pkg.add("BinaryBuilder")'
 script:
-- mkdir -p products
-- echo 123 > products/test.jl
+- julia build_tarballs.jl --verbose
 deploy:
     provider: releases
     api_key:
