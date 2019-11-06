@@ -3,7 +3,7 @@
 using BinaryBuilder
 
 name = "duckdb"
-version = v"0.0.3"
+version = v"0.0.4"
 
 # Collection of sources required to build tpch-dbgen
 sources = [
